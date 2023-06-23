@@ -5,8 +5,11 @@ NB. mixes LBYL and EAFP to reflect simpler logic
 This version using simple prints to STDOUT rather than formalised logger
 """
 
+#import getenv
+from os import getenv
+
 # import argparse for passing PORT variable through the cli
-import argparse
+#import argparse
 
 # import Flask microframework and associated tools
 from flask import Flask, request, jsonify
@@ -21,12 +24,16 @@ import mimetypes
 mimetypes.add_type('text/javascript', '.js')
 
 # set up the app with listening socket for http requests and appropriate hostname
-parser = argparse.ArgumentParser()
-parser.add_argument("--PORT", default="8080")
-args = parser.parse_args()
+#parser = argparse.ArgumentParser()
+#parser.add_argument("--PORT", default="8080")
+#args = parser.parse_args()
 
-PORT = args.PORT
-HOST = 'localhost'
+#PORT = args.PORT
+#HOST = '0.0.0.0'
+
+HOST = getenv('HOSTNAME')
+PORT = getenv('PORTNAME')
+
 
 # get app to serve static files from the public directory
 app = Flask(__name__, static_url_path=f'/', static_folder='./static')
