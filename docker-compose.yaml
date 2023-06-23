@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  lbg:
+    image: lbg-python-image:v2
+    build: .
+    deploy:
+      replicas: 3
+    environment:
+      - HOSTNAME=0.0.0.0
+      - PORTNAME=8080
+    ports:
+      - target: 8080
+        published: 9000
