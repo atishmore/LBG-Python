@@ -3,8 +3,6 @@ services:
   lbg:
     image: lbg-python-image:v2
     build: .
-    deploy:
-      replicas: 3
     environment:
       - HOSTNAME=0.0.0.0
       - PORTNAME=8080
